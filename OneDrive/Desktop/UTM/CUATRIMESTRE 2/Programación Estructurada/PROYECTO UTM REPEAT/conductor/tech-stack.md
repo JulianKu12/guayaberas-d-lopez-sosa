@@ -2,11 +2,10 @@
 
 ## Frontend
 - **HTML5:** Standard markup language for building the property discovery and management screens.
-- **Tailwind CSS:** A utility-first CSS framework for building custom, premium UI components. Using the forms, container-queries, and typography plugins.
+- **Tailwind CSS:** A utility-first CSS framework for building custom, luxury UI components. Using the forms and container-queries plugins.
 - **Google Fonts:**
-    - **Newsreader:** A serif font for a classic, sophisticated look.
-    - **SF Pro:** A modern, clean sans-serif font for interface elements.
-- **Material Icons:** A set of icons for consistent and clear visual communication.
+    - **Inter:** A modern and clean sans-serif font for the interface.
+- **Material Icons:** A set of icons for clear and consistent visual communication.
 
 ## Backend
 - **N/A:** The current project consists of static UI components/screens. Future backend integration will be defined as needed.
