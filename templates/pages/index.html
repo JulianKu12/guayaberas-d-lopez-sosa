@@ -1,0 +1,53 @@
+{% extends "layout/base.html" %}
+
+
+{% block content %}
+<!-- Sección Hero: Introducción visual de impacto con imagen de ambiente -->
+<section class="hero">
+    <div class="hero-content">
+        <p class="hero-subtitle">Orgullosamente Tekiteños</p>
+        <h1 class="hero-title"><span>GUAYABERAS</span> <span>D´ LÓPEZ SOSA</span></h1>
+    </div>
+</section>
+
+<!-- Sección del Catálogo: Contenedor principal de la cuadrícula de productos -->
+<section id="catalogo" class="catalog-container">
+    <div class="catalog-grid">
+        <!-- Bucle de Jinja2 para iterar sobre la lista de productos pasada desde Flask -->
+        {% for producto in productos %}
+        <article class="product-card">
+            <!-- Enlace envolvente que lleva a la página de detalle del producto -->
+            <a href="{{ url_for('producto', id=producto.id) }}" class="product-link">
+                <div class="product-image-wrapper">
+                    <!-- Imagen del producto con carga diferida (lazy loading) y manejo de errores -->
+                    <img src="{{ url_for('static', filename='assets/img/' + producto.imagen) }}" 
+                         alt="{{ producto.nombre }}" 
+                         loading="lazy" 
+                         onerror="console.log('Error cargando: ' + this.src); this.style.backgroundColor='#F0F0F0';"
+                         onload="this.classList.add('loaded');">
+                    
+                    <!-- Capa de detalles que aparece al pasar el ratón (hover) -->
+                    <div class="product-hover-details">
+                        <p class="detail-label">Composición</p>
+                        <p class="detail-value">{{ producto.material }}</p>
+                        <div class="detail-divider"></div>
+                        <p class="detail-label">Color</p>
+                        <p class="detail-value">{{ producto.color }}</p>
+                        <!-- Texto informativo sobre la interacción -->
+                        <span class="view-more">Haz clic sobre la imagen para conocer más sobre la pieza</span>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Información básica del producto debajo de la imagen -->
+            <div class="product-info">
+                <p class="product-sku">{{ producto.sku }}</p>
+                <h3 class="product-name">{{ producto.nombre }}</h3>
+                <!-- Formateo de precio con moneda y decimales -->
+                <p class="product-price">${{ "{:,.2f}".format(producto.precio) }}</p>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

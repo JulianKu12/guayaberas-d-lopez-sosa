@@ -1,0 +1,120 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}{{ producto.nombre }} | {{ brand_name }}{% endblock %}
+
+{% block content %}
+<div class="product-detail-container">
+    <!-- Galería Estilo Revista (60% ancho): Muestra la imagen principal y miniaturas -->
+    <div class="product-gallery">
+        <div class="main-image">
+            <img id="main-product-img" 
+                 src="{{ url_for('static', filename='assets/img/' + producto.imagen) }}" 
+                 alt="{{ producto.nombre }}"
+                 onerror="console.log('Error cargando detalle: ' + this.src); this.style.backgroundColor='#F0F0F0';">
+        </div>
+
+
+        <!-- Descripción estilo editorial debajo de la galería -->
+        <div class="gallery-row">
+            <div class="product-description-magazine">
+                
+                <!-- Especificaciones técnicas rápidas -->
+                <div class="product-specs">
+                    <div class="spec-item">
+                        <span class="spec-label">Composición</span>
+                        <span class="spec-value">{{ producto.material }}</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Color</span>
+                        <span class="spec-value">{{ producto.color }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Panel Fijo Informativo (Derecha - 40% ancho): Compra y personalización -->
+    <aside class="product-panel">
+        <div class="panel-content">
+            <!-- Navegación Breadcrumb para facilitar el regreso al catálogo -->
+            <nav class="breadcrumb">
+                <a href="/">Colección</a> / <span>{{ producto.nombre }}</span>
+            </nav>
+
+            <span class="product-sku-detail">{{ producto.sku }}</span>
+            <h1 class="product-name-title">{{ producto.nombre }}</h1>
+            <p class="product-price-large">${{ "{:,.2f}".format(producto.precio) }}</p>
+            
+            <h3 class="configurador-title">Personaliza tu {{ producto.nombre }} sin ningún compromiso</h3>
+            
+            <!-- Configurador de Sastrería: Simulación de opciones de personalización -->
+            <div class="configurador-sastreria" data-producto="{{ producto.nombre }}">
+                <div class="config-item">
+                    <label for="select-tela">Tela</label>
+                    <select id="select-tela">
+                        <optgroup label="Mezcla Premium (50% Lino / 50% Algodón)">
+                            <option value="Lino Amalfi">Lino Amalfi</option>
+                            <option value="Lino Look">Lino Look</option>
+                            <option value="Lino Murano">Lino Murano</option>
+                            <option value="Lino Flamé" selected>Lino Flamé</option>
+                        </optgroup>
+                        <optgroup label="Algodón Puro">
+                            <option value="Popelina 100% Algodón">Popelina 100% Algodón</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="config-item">
+                    <label for="select-cuello">Cuello</label>
+                    <select id="select-cuello">
+                        <option value="Camisero">Camisero</option>
+                        <option value="Mao">Mao</option>
+                        <option value="Sport">Sport</option>
+                    </select>
+                </div>
+
+                <div class="config-item">
+                    <label for="select-manga">Manga</label>
+                    <select id="select-manga">
+                        <option value="Corta">Corta</option>
+                        <option value="Larga">Larga</option>
+                    </select>
+                </div>
+
+                <div class="config-item">
+                    <label for="color_personalizado">Describe el color que deseas:</label>
+                    <textarea id="color_personalizado" name="color" placeholder="Ej: Azul cielo, Beige, Rosa bajo..." rows="2" class="config-textarea"></textarea>
+                </div>
+
+                <div class="config-item">
+                    <label for="select-talla">Talla</label>
+                    <select id="select-talla">
+                        <optgroup label="Línea Infantil">
+                            <option value="Talla 0">Talla 0</option>
+                            <option value="Talla 2">Talla 2</option>
+                            <option value="Talla 4">Talla 4</option>
+                            <option value="Talla 6">Talla 6</option>
+                            <option value="Talla 8">Talla 8</option>
+                            <option value="Talla 10">Talla 10</option>
+                            <option value="Talla 12">Talla 12</option>
+                            <option value="Talla 14">Talla 14</option>
+                        </optgroup>
+                        <optgroup label="Línea Caballero">
+                            <option value="Talla 36">Talla 36</option>
+                            <option value="Talla 38" selected>Talla 38</option>
+                            <option value="Talla 40">Talla 40</option>
+                            <option value="Talla 42">Talla 42</option>
+                            <option value="Talla 44">Talla 44</option>
+                            <option value="Talla 46">Talla 46</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <!-- Botón que activa la función JS para enviar los detalles por WhatsApp -->
+                <button class="btn-whatsapp-lujo" onclick="enviarWhatsApp()">CONSULTAR PERSONALIZACIÓN</button>
+            </div>
+
+        </div>
+    </aside>
+</div>
+{% endblock %}
