@@ -1,0 +1,12 @@
+{% extends "layout/base.html" %}
+
+{% block title %}Página no encontrada - {{ brand_name }}{% endblock %}
+
+{% block content %}
+<section class="error-404">
+    <h2>404</h2>
+    <p>Lo sentimos, el modelo que buscas no se encuentra en nuestra colección actual.</p>
+    <p style="font-size: 0.9rem; color: var(--cafe-claro);">Es posible que el enlace esté roto o la pieza ya no esté disponible.</p>
+    <a href="/" class="btn">Explorar la Colección</a>
+</section>
+{% endblock %}

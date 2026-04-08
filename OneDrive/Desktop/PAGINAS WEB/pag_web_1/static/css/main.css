@@ -1,0 +1,199 @@
+/* --- PALETA DE COLORES DE LUJO --- 
+   Define los colores base de la marca para mantener la consistencia visual.
+*/
+:root {
+    --color-hueso: #FDFCF0;             /* Fondo suave y elegante */
+    --color-cafe-texto: #4B3621;        /* Color principal para legibilidad */
+    --color-chocolate-profundo: #3E2723; /* Acentos oscuros y sofisticados */
+    --color-beige-crema: #F5F5DC;       /* Contrastes suaves */
+    --color-oro-gradiente: linear-gradient(90deg, transparent, #C19A6B, transparent); /* Separadores dorados */
+}
+
+/* --- ESTILOS BASE --- 
+   Configuración global del cuerpo del documento.
+*/
+body {
+    background-color: var(--color-hueso);
+    color: var(--color-cafe-texto);
+    margin: 0;
+    overflow-x: hidden; /* Evita el scroll horizontal */
+}
+
+/* --- PANTALLA DE INTRODUCCIÓN (PRELOADER) --- 
+   Capa de carga que presenta la marca con una animación elegante.
+*/
+#intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #2A1B18; /* Café chocolate oscuro para resaltar el logo blanco */
+    display: flex; /* Asegura centrado total */
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1), 
+                visibility 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Clase aplicada por JS para desvanecer el preloader */
+#intro-screen.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Contenido interno del preloader */
+.intro-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--color-beige-crema);
+}
+
+/* Estilo del logotipo en el preloader */
+.intro-logo-container {
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.loader-logo {
+    width: 400px; /* Tamaño de impacto visual aumentado */
+    height: auto;
+    max-width: none; /* Elimina cualquier restricción de tamaño */
+    opacity: 0;
+    animation: 
+        fadeInLogo 2s ease-out forwards, 
+        logoPulse 2s infinite ease-in-out 2s;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.25)); /* Resplandor más profundo */
+}
+
+@keyframes fadeInLogo {
+    0% { opacity: 0; transform: scale(0.96); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes logoPulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.02); opacity: 0.85; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Título secundario del preloader */
+.intro-title {
+    font-family: 'Lato', sans-serif;
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    letter-spacing: 8px;
+    font-weight: 300;
+    margin: 0;
+    text-transform: uppercase;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Línea divisoria con degradado dorado */
+.gold-divider {
+    width: 200px;
+    height: 1px;
+    background: var(--color-oro-gradiente);
+    margin: 1.5rem auto;
+}
+
+/* Slogan con estilo editorial */
+.intro-slogan {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    opacity: 0.8;
+}
+
+/* --- ANIMACIONES --- */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- CONTENIDO PRINCIPAL --- 
+   Controla la aparición suave del contenido después del preloader.
+*/
+#main-content {
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+#main-content.show {
+    opacity: 1;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-xl);
+}
+
+.product-card img {
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border: 2px solid #3E2723;
+    border-radius: 4px;
+    min-height: 300px;
+    background-color: #E5E5E5;
+    transition: transform 0.4s ease;
+}
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+    .intro-logo {
+        font-size: 2.5rem;
+    }
+    .intro-title {
+        font-size: 0.9rem;
+        letter-spacing: 5px;
+    }
+    .gold-divider {
+        width: 150px;
+    }
+}
+
+/* --- NAVEGACIÓN --- */
+#main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 0;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+}
+
+#main-nav nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; /* Centrar el Logo */
+    align-items: center;
+    padding: 0 40px;
+}
+
+#main-nav .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 6px;
+    color: var(--color-chocolate-profundo);
+    text-transform: uppercase;
+    cursor: pointer;
+}
+

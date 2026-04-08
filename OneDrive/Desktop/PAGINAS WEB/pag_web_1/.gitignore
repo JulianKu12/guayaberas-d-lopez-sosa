@@ -1,0 +1,22 @@
+# Entorno Virtual (Lo más importante para ignorar)
+venv/
+.venv/
+env/
+
+# Archivos temporales de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Base de datos local (Ya que usaremos PostgreSQL en la nube)
+*.db
+*.sqlite3
+
+# Archivos de configuración del editor (Opcional)
+.vscode/
+.idea/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db

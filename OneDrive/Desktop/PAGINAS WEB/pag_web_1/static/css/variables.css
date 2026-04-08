@@ -1,0 +1,26 @@
+:root {
+    /* Paleta de Lujo */
+    --color-hueso: #FDFCF0;
+    --color-beige-desierto: #C19A6B;
+    --color-cafe-cafe: #4B3621;
+    --color-oro-metalico: #D4AF37;
+
+    /* Escala Tipográfica (Proporción Áurea: 1.618) */
+    --base-font-size: 1rem;
+    
+    --text-xs: 0.382rem;
+    --text-sm: 0.618rem;
+    --text-base: 1rem;
+    --text-md: 1.618rem;
+    --text-lg: 2.618rem;
+    --text-xl: 4.236rem;
+    --text-xxl: 6.854rem;
+
+    /* Espaciado basado en Proporción Áurea */
+    --space-xs: 0.382rem;
+    --space-sm: 0.618rem;
+    --space-md: 1rem;
+    --space-lg: 1.618rem;
+    --space-xl: 2.618rem;
+    --space-xxl: 4.236rem;
+}
