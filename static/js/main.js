@@ -115,15 +115,35 @@ function enviarWhatsApp() {
     const configurador = document.querySelector('.configurador-sastreria');
     const nombreProducto = configurador.getAttribute('data-producto');
     
-    // Captura de valores seleccionados en los menús desplegables
-    const tela = document.getElementById('select-tela').value;
-    const cuello = document.getElementById('select-cuello').value;
-    const manga = document.getElementById('select-manga').value;
-    const color = document.getElementById('color_personalizado').value || 'No especificado';
-    const talla = document.getElementById('select-talla').value;
+    // Determinamos si estamos en vista móvil revisando la visibilidad del configurador premium
+    const mobileContainer = document.querySelector('.configurador-mobile-premium');
+    const esMobile = mobileContainer && window.getComputedStyle(mobileContainer).display !== 'none';
+
+    let tela, manga, cuello, talla, color;
+
+    if (esMobile) {
+        // Captura de valores en Mobile Premium (Radio Buttons)
+        tela = document.querySelector('input[name="m-tela"]:checked')?.value || "No seleccionada";
+        cuello = document.querySelector('input[name="m-cuello"]:checked')?.value || "No seleccionado";
+        manga = document.querySelector('input[name="m-manga"]:checked')?.value || "No seleccionada";
+        talla = document.querySelector('input[name="m-talla"]:checked')?.value || "No seleccionada";
+        color = document.getElementById('m-color-notas').value || 'No especificado';
+    } else {
+        // Captura de valores en Desktop (Selectores tradicionales)
+        tela = document.getElementById('select-tela').value;
+        cuello = document.getElementById('select-cuello').value;
+        manga = document.getElementById('select-manga').value;
+        color = document.getElementById('color_personalizado').value || 'No especificado';
+        talla = document.getElementById('select-talla').value;
+    }
 
     // Construcción del mensaje personalizado
-    const mensaje = `Hola! Me interesa personalizar el modelo ${nombreProducto} con Tela: ${tela}, Cuello: ${cuello}, Manga: ${manga}, Color: ${color} y Talla: ${talla}. ¿Tienen disponibilidad?`;
+    const mensaje = `Hola! Me interesa personalizar el modelo ${nombreProducto} con:
+🧵 Tela: ${tela}
+👔 Cuello: ${cuello}
+📏 Manga: ${manga}
+📐 Talla: ${talla}
+🎨 Notas: ${color}`;
     
     // Codificación de la URL para WhatsApp con el mensaje
     const url = `https://wa.me/529994599995?text=${encodeURIComponent(mensaje)}`;

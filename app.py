@@ -228,7 +228,6 @@ def producto(id):
 def page_not_found(e):
     return render_template('pages/404.html'), 404
 
-if __name__ == "__main__":
-    # Esto lee el puerto que Railway te asigne, o usa el 5000 si estás en tu PC
-    port = int(os.environ.get("PORT", 8080))
-    app.run(host='0.0.0.0', port=port)
+if __name__ == '__main__':
+    # Esto solo se activa cuando lo corres tú localmente
+    app.run(debug=False, port=8080)

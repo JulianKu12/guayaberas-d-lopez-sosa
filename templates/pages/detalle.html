@@ -49,65 +49,195 @@
             
             <!-- Configurador de Sastrería: Simulación de opciones de personalización -->
             <div class="configurador-sastreria" data-producto="{{ producto.nombre }}">
-                <div class="config-item">
-                    <label for="select-tela">Tela</label>
-                    <select id="select-tela">
-                        <optgroup label="Mezcla Premium (50% Lino / 50% Algodón)">
-                            <option value="Lino Amalfi">Lino Amalfi</option>
-                            <option value="Lino Look">Lino Look</option>
-                            <option value="Lino Murano">Lino Murano</option>
-                            <option value="Lino Flamé" selected>Lino Flamé</option>
-                        </optgroup>
-                        <optgroup label="Algodón Puro">
-                            <option value="Popelina 100% Algodón">Popelina 100% Algodón</option>
-                        </optgroup>
-                    </select>
+                
+                <!-- VISTA DESKTOP: Selectores tradicionales -->
+                <div class="configurador-desktop">
+                    <div class="config-item">
+                        <label for="select-tela">Tela</label>
+                        <select id="select-tela">
+                            <optgroup label="Mezcla Premium (50% Lino / 50% Algodón)">
+                                <option value="Lino Amalfi">Lino Amalfi</option>
+                                <option value="Lino Look">Lino Look</option>
+                                <option value="Lino Murano">Lino Murano</option>
+                                <option value="Lino Flamé" selected>Lino Flamé</option>
+                            </optgroup>
+                            <optgroup label="Algodón Puro">
+                                <option value="Popelina 100% Algodón">Popelina 100% Algodón</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="config-item">
+                        <label for="select-cuello">Cuello</label>
+                        <select id="select-cuello">
+                            <option value="Camisero">Camisero</option>
+                            <option value="Mao">Mao</option>
+                            <option value="Sport">Sport</option>
+                        </select>
+                    </div>
+
+                    <div class="config-item">
+                        <label for="select-manga">Manga</label>
+                        <select id="select-manga">
+                            <option value="Corta">Corta</option>
+                            <option value="Larga">Larga</option>
+                        </select>
+                    </div>
+
+                    <div class="config-item">
+                        <label for="color_personalizado">Describe el color que deseas:</label>
+                        <textarea id="color_personalizado" name="color" placeholder="Ej: Azul cielo, Beige, Rosa bajo..." rows="2" class="config-textarea"></textarea>
+                    </div>
+
+                    <div class="config-item">
+                        <label for="select-talla">Talla</label>
+                        <select id="select-talla">
+                            <optgroup label="Línea Infantil">
+                                <option value="Talla 0">Talla 0</option>
+                                <option value="Talla 2">Talla 2</option>
+                                <option value="Talla 4">Talla 4</option>
+                                <option value="Talla 6">Talla 6</option>
+                                <option value="Talla 8">Talla 8</option>
+                                <option value="Talla 10">Talla 10</option>
+                                <option value="Talla 12">Talla 12</option>
+                                <option value="Talla 14">Talla 14</option>
+                            </optgroup>
+                            <optgroup label="Línea Caballero">
+                                <option value="Talla 36">Talla 36</option>
+                                <option value="Talla 38" selected>Talla 38</option>
+                                <option value="Talla 40">Talla 40</option>
+                                <option value="Talla 42">Talla 42</option>
+                                <option value="Talla 44">Talla 44</option>
+                                <option value="Talla 46">Talla 46</option>
+                            </optgroup>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="config-item">
-                    <label for="select-cuello">Cuello</label>
-                    <select id="select-cuello">
-                        <option value="Camisero">Camisero</option>
-                        <option value="Mao">Mao</option>
-                        <option value="Sport">Sport</option>
-                    </select>
-                </div>
+                <!-- VISTA MOBILE PREMIUM: Sastrería Digital Deslizable -->
+                <div class="configurador-mobile-premium">
+                    
+                    <!-- 1. TELAS (Todas las 5 opciones en carrusel) -->
+                    <div class="mobile-section">
+                        <span class="mobile-label">1. Selección de Tela (Deslice)</span>
+                        <div class="horizontal-scroll-container">
+                            <div class="scroll-wrapper">
+                                <input type="radio" name="m-tela" id="mt-amalfi" value="Lino Amalfi" hidden>
+                                <label for="mt-amalfi" class="luxury-card-mobile">
+                                    <span class="card-tag">Premium</span>
+                                    <span class="card-name">Lino Amalfi</span>
+                                    <span class="card-meta">Mezcla 50/50</span>
+                                </label>
 
-                <div class="config-item">
-                    <label for="select-manga">Manga</label>
-                    <select id="select-manga">
-                        <option value="Corta">Corta</option>
-                        <option value="Larga">Larga</option>
-                    </select>
-                </div>
+                                <input type="radio" name="m-tela" id="mt-look" value="Lino Look" hidden>
+                                <label for="mt-look" class="luxury-card-mobile">
+                                    <span class="card-tag">Premium</span>
+                                    <span class="card-name">Lino Look</span>
+                                    <span class="card-meta">Estilo Casual</span>
+                                </label>
 
-                <div class="config-item">
-                    <label for="color_personalizado">Describe el color que deseas:</label>
-                    <textarea id="color_personalizado" name="color" placeholder="Ej: Azul cielo, Beige, Rosa bajo..." rows="2" class="config-textarea"></textarea>
-                </div>
+                                <input type="radio" name="m-tela" id="mt-murano" value="Lino Murano" hidden>
+                                <label for="mt-murano" class="luxury-card-mobile">
+                                    <span class="card-tag">Exclusivo</span>
+                                    <span class="card-name">Lino Murano</span>
+                                    <span class="card-meta">Textura Suave</span>
+                                </label>
 
-                <div class="config-item">
-                    <label for="select-talla">Talla</label>
-                    <select id="select-talla">
-                        <optgroup label="Línea Infantil">
-                            <option value="Talla 0">Talla 0</option>
-                            <option value="Talla 2">Talla 2</option>
-                            <option value="Talla 4">Talla 4</option>
-                            <option value="Talla 6">Talla 6</option>
-                            <option value="Talla 8">Talla 8</option>
-                            <option value="Talla 10">Talla 10</option>
-                            <option value="Talla 12">Talla 12</option>
-                            <option value="Talla 14">Talla 14</option>
-                        </optgroup>
-                        <optgroup label="Línea Caballero">
-                            <option value="Talla 36">Talla 36</option>
-                            <option value="Talla 38" selected>Talla 38</option>
-                            <option value="Talla 40">Talla 40</option>
-                            <option value="Talla 42">Talla 42</option>
-                            <option value="Talla 44">Talla 44</option>
-                            <option value="Talla 46">Talla 46</option>
-                        </optgroup>
-                    </select>
+                                <input type="radio" name="m-tela" id="mt-flame" value="Lino Flamé" checked hidden>
+                                <label for="mt-flame" class="luxury-card-mobile">
+                                    <span class="card-tag">Artesanal</span>
+                                    <span class="card-name">Lino Flamé</span>
+                                    <span class="card-meta">Efecto Rústico</span>
+                                </label>
+
+                                <input type="radio" name="m-tela" id="mt-algodon" value="Popelina 100% Algodón" hidden>
+                                <label for="mt-algodon" class="luxury-card-mobile">
+                                    <span class="card-tag">Clásico</span>
+                                    <span class="card-name">Algodón</span>
+                                    <span class="card-meta">Puro y Fresco</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. CUELLO (3 Opciones - Pills) -->
+                    <div class="mobile-section">
+                        <span class="mobile-label">2. Estilo de Cuello</span>
+                        <div class="pills-row">
+                            <input type="radio" name="m-cuello" id="mc-camisero" value="Camisero" checked hidden>
+                            <label for="mc-camisero" class="pill-btn">Camisero</label>
+
+                            <input type="radio" name="m-cuello" id="mc-mao" value="Mao" hidden>
+                            <label for="mc-mao" class="pill-btn">Mao</label>
+
+                            <input type="radio" name="m-cuello" id="mc-sport" value="Sport" hidden>
+                            <label for="mc-sport" class="pill-btn">Sport</label>
+                        </div>
+                    </div>
+
+                    <!-- 3. MANGA (2 Opciones - Pills 50/50) -->
+                    <div class="mobile-section">
+                        <span class="mobile-label">3. Tipo de Manga</span>
+                        <div class="pills-row">
+                            <input type="radio" name="m-manga" id="mm-corta" value="Corta" checked hidden>
+                            <label for="mm-corta" class="pill-btn">Corta</label>
+
+                            <input type="radio" name="m-manga" id="mm-larga" value="Larga" hidden>
+                            <label for="mm-larga" class="pill-btn">Larga</label>
+                        </div>
+                    </div>
+
+                    <!-- 4. TALLAS INFANTILES (0 a 14 - Scroll) -->
+                    <div class="mobile-section">
+                        <span class="mobile-label">4. Talla Línea Infantil</span>
+                        <div class="horizontal-scroll-container">
+                            <div class="scroll-wrapper">
+                                <input type="radio" name="m-talla" id="msz-i-0" value="Infantil Talla 0" hidden>
+                                <label for="msz-i-0" class="size-circle-mobile">0</label>
+                                <input type="radio" name="m-talla" id="msz-i-2" value="Infantil Talla 2" hidden>
+                                <label for="msz-i-2" class="size-circle-mobile">2</label>
+                                <input type="radio" name="m-talla" id="msz-i-4" value="Infantil Talla 4" hidden>
+                                <label for="msz-i-4" class="size-circle-mobile">4</label>
+                                <input type="radio" name="m-talla" id="msz-i-6" value="Infantil Talla 6" hidden>
+                                <label for="msz-i-6" class="size-circle-mobile">6</label>
+                                <input type="radio" name="m-talla" id="msz-i-8" value="Infantil Talla 8" hidden>
+                                <label for="msz-i-8" class="size-circle-mobile">8</label>
+                                <input type="radio" name="m-talla" id="msz-i-10" value="Infantil Talla 10" hidden>
+                                <label for="msz-i-10" class="size-circle-mobile">10</label>
+                                <input type="radio" name="m-talla" id="msz-i-12" value="Infantil Talla 12" hidden>
+                                <label for="msz-i-12" class="size-circle-mobile">12</label>
+                                <input type="radio" name="m-talla" id="msz-i-14" value="Infantil Talla 14" hidden>
+                                <label for="msz-i-14" class="size-circle-mobile">14</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. TALLAS CABALLERO (36 a 46 - Scroll) -->
+                    <div class="mobile-section">
+                        <span class="mobile-label">5. Talla Línea Caballero</span>
+                        <div class="horizontal-scroll-container">
+                            <div class="scroll-wrapper">
+                                <input type="radio" name="m-talla" id="msz-c-36" value="Caballero Talla 36" hidden>
+                                <label for="msz-c-36" class="size-circle-mobile">36</label>
+                                <input type="radio" name="m-talla" id="msz-c-38" value="Caballero Talla 38" checked hidden>
+                                <label for="msz-c-38" class="size-circle-mobile">38</label>
+                                <input type="radio" name="m-talla" id="msz-c-40" value="Caballero Talla 40" hidden>
+                                <label for="msz-c-40" class="size-circle-mobile">40</label>
+                                <input type="radio" name="m-talla" id="msz-c-42" value="Caballero Talla 42" hidden>
+                                <label for="msz-c-42" class="size-circle-mobile">42</label>
+                                <input type="radio" name="m-talla" id="msz-c-44" value="Caballero Talla 44" hidden>
+                                <label for="msz-c-44" class="size-circle-mobile">44</label>
+                                <input type="radio" name="m-talla" id="msz-c-46" value="Caballero Talla 46" hidden>
+                                <label for="msz-c-46" class="size-circle-mobile">46</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. COLOR -->
+                    <div class="mobile-section">
+                        <span class="mobile-label">6. Detalles del Color</span>
+                        <textarea id="m-color-notas" class="mobile-textarea" placeholder="Describa el color o combinación deseada..."></textarea>
+                    </div>
                 </div>
 
                 <!-- Botón que activa la función JS para enviar los detalles por WhatsApp -->
