@@ -229,5 +229,7 @@ def page_not_found(e):
     return render_template('pages/404.html'), 404
 
 if __name__ == '__main__':
-    # Esto solo se activa cuando lo corres tú localmente
-    app.run(debug=False, port=8080)
+    # Obtiene el puerto de Railway o usa el 8080 si estás en tu PC local
+    port = int(os.environ.get("PORT", 8080))
+    # '0.0.0.0' es vital para que la página sea visible en internet
+    app.run(host='0.0.0.0', port=port, debug=False)
